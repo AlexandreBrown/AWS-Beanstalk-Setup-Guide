@@ -8,7 +8,7 @@
 5. Download aws Beanstalk CLI : `pip3 install awsebcli`
 
 ## Setup
-### Subdomain Delegation
+### Subdomain Delegation [Optional]
 Let's say we have a root domain (eg: `mlprojects.ai`) hosted on some domain name provider (eg: https://www.namecheap.com/ , https://www.godaddy.com/ etc).  
 Our goal is to create a subdomain on AWS Route53 without having to migrate the root domain `mlprojects.ai` to Route53.  
 To do so, we need to do the following :  
@@ -52,6 +52,8 @@ For more information on what is an Appliation Load Balancer see the [AWS documen
 Note that the configuration in the `.config` file presented earlier expects a load balancer of type `application`.  
 
 ### Use Custom Domain For Beanstalk Environment
+#### Using Route53
+If you did subdomain delegation follow these steps:  
 These steps follow the [AWS documentation](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-to-beanstalk-environment.html)
 1. Navigate to the subdomain Route53 Hosted Zone (eg: `staging.mlprojects.ai`)
 1. Click "Create a record"
@@ -69,6 +71,9 @@ These steps follow the [AWS documentation](https://docs.aws.amazon.com/Route53/l
 
 Visit your application using the subdomain url you used when you created the Route53 Hosted Zone (eg: `https://staging.mlprojects.ai/`)  
 ![image](https://user-images.githubusercontent.com/26939775/210655802-de150efe-841f-404b-a963-8e8cd479841d.png)
+
+#### Using Root DNS Registrar
+Follow https://montanawong.medium.com/how-to-point-your-custom-domain-to-an-aws-load-balancer-51dc2eb6d84c
 
 ## Deploy New Changes To An Environment
 1. Edit your application source code.
